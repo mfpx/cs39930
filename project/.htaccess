@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^system/ - [L,R=404]
+
+Options -Indexes
