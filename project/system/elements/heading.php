@@ -7,8 +7,16 @@
         <script type="text/javascript">
             function do_login()
             {
-                var email = $("#email").val();
-                var pass = $("#password").val();
+                var email_plain = $("#email").val();
+                var pass_plain = $("#password").val();
+                
+                /*
+                 * Adds a layer of obfuscation when sending data
+                 * THIS IS NOT ENCRYPTION!
+                 */
+                var pass = btoa(pass_plain);
+                var email = btoa(email_plain);
+                
                 if (email !== "" && pass !== "")
                 {
                     $("#loading").css({"display": "block"});
@@ -25,7 +33,7 @@
                                     alert (response);
                                     if (response === '1')
                                     {
-                                        window.location.href = "index.php";
+                                        window.location.href = "home.php";
                                         alert("success!");
                                     } else
                                     {

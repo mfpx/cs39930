@@ -23,8 +23,8 @@ $config['footer'] = true;
 /*
  * Database configuration
  */
-$db_config['server'] = ""; //Server address
-$db_config['username'] = ""; //Username
-$db_config['password'] = ""; //Password
-$db_config['database'] = ""; //Database name
+$db_config['server'] = "localhost"; //Server address
+$db_config['username'] = "cs39930_service"; //Username
+$db_config['password'] = "H3s9EjveUWrxRfal"; //Password
+$db_config['database'] = "cs39930"; //Database name
 $db_config['port'] = "3306"; //Default: 3306, only change if your server runs on a non-standard port
