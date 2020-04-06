@@ -21,6 +21,15 @@ $config['development'] = true;
 $config['footer'] = true;
 
 /*
+ * This is the hashing cost for passwords
+ * Higher = better, but heavier on hardware
+ * See: https://www.php.net/manual/en/password.constants.php
+ * Default: 10
+ */
+
+$config['hash_cost'] = 10;
+
+/*
  * Database configuration
  */
 $db_config['server'] = "localhost"; //Server address

@@ -1,11 +1,10 @@
 <?php
 
 require 'system/core.php';
-include 'system/functions.php';
 
-if (isset($_SESSION['uid']) && !empty($_SESSION['uid'])){
-    echo base64_decode($_SESSION['uid']);
-} else {
-    redirect('index.php', 301);
-}
+//Main page
+include 'system/elements/heading.php';
+include 'system/elements/pages/home_body.php';
+include 'system/elements/footer.php';
+
 ?>

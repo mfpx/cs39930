@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ($config['footer']){
     echo
     '

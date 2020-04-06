@@ -64,7 +64,15 @@ hr {
     text-align: left;
     border: 1px solid black;
     /*margin: 10% 40% 10% 40%;*/
-    margin: 10% 0% 10% 40%;
+    /*margin: 10% 0% 10% 40%;*/
+    /*margin: 50% auto;*/
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 15%;
 }
 
@@ -83,8 +91,4 @@ form #login_button {
     background-color: #333;
     color: #f2f2f2;
     padding: 5px 20px;
-}
-
-#loading {
- display: none;
 }
