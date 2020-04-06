@@ -11,8 +11,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevan
     $email = base64_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     $password_in = base64_decode(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
-    $_SESSION['uid'] = $email; //Set a session variable 'uid' to email
-
     try {
         $st = $connection->prepare('SELECT email, password FROM users WHERE email = :email');
         $st->bindValue(':email', $email, PDO::PARAM_STR);
@@ -20,6 +18,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevan
 
         $row = $st->fetch(PDO::FETCH_ASSOC);
         $password_db = $row['password'];
+        
+        if (!empty($row['email'])){
+            $_SESSION['uid'] = $email; //Set a session variable 'uid' to email
+        }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

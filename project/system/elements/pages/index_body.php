@@ -35,6 +35,10 @@ is_loggedin(2);
                                 window.location.href = "home.php";
                             } else
                             {
+                                /*
+                                 * This uses notify.js notification library
+                                 * See: https://notifyjs.jpillora.com/
+                                 */
                                 $("#login-box").notify(
                                         "Your email and/or password is incorrect",
                                         {
