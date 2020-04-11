@@ -44,7 +44,7 @@ hr {
     color: black;
 }
 
-#menu #admin {
+#menu .right_button {
     float: right;
 }
 
@@ -66,15 +66,9 @@ hr {
 #login-box {
     padding: 30px;
     text-align: left;
-    border: 1px solid black;
-    /*
-    margin: 10% 40% 10% 40%;
-    margin: 10% 0% 10% 40%;
-    margin: 50% auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    */
+    border: transparent;
+    background: #f3f3f3;
+    border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -88,17 +82,40 @@ hr {
     float: left;
 }
 
+#session {
+    font-size: 18pt;
+    margin: 1%;
+    float: right;
+}
+
 form .field {
     margin-bottom: 5px;
     width: 50%;
-}
-
-#menu #logout {
-    float: right;
 }
 
 form #login_button {
     background-color: #333;
     color: #f2f2f2;
     padding: 5px 20px;
+}
+
+button {
+    padding: 7px;
+    font-size: 14pt;
+    color: #f2f2f2;
+    border-radius: 10px;
+    border: transparent;
+    background: #333;
+    cursor: pointer;
+}
+
+#change-form {
+    display: none;
+    float: left;
+    margin: 1%;
+}
+
+#change-button {
+    float: left;
+    margin: 1% 0% 0% 0%;
 }

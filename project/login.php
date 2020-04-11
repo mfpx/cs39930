@@ -21,6 +21,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevan
         
         if (!empty($row['email'])){
             $_SESSION['uid'] = $email; //Set a session variable 'uid' to email
+            $_SESSION['doss'] = date("d/m/Y"); //DOSS - Date of session start
+            $_SESSION['toss'] = date("h:i:sa"); //TOSS - Time of session start
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
