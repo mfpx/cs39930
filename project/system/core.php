@@ -19,6 +19,23 @@ if ($config['development']) {
 }
 
 /*
+ * SSL and general security procedures
+ */
+if ($config['level'] !== 0) {
+    if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
+        if ($config['level'] === 2) {
+            redirect('index.php', 301);
+        } else if ($config['level'] === 1) {
+            $flags['secure'] = 0;
+        }
+    } else if ($config['level'] === -1) {
+        redirect('index.php', 301);
+    } else {
+        $flags['secure'] = -1;
+    }
+}
+
+/*
  * Language selection
  */
 if (!empty($config['language'])) {

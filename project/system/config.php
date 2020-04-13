@@ -22,6 +22,16 @@ $config['development'] = true;
 $config['footer'] = true;
 
 /*
+ * SSL Security level
+ * -1 - Redirect all traffic regardless of SSL security settings - DEVELOPMENT OPTION
+ * 0 - Nothing will happen, regardless of whether or not SSL is enabled
+ * 1 - If SSL is not enabled, it will generate an error in the admin panel
+ * 2 - If SSL is not enabled, it will strictly redirect all traffic to a selected page
+ */
+$config['level'] = 2;
+$config['insecure_page'] = "insecure.php";
+
+/*
  * This is the hashing cost for passwords
  * Higher = better, but heavier on hardware
  * See: https://www.php.net/manual/en/password.constants.php

@@ -45,27 +45,11 @@ if (isset($_POST['function']) && $_POST['function'] == "logout") {
     logout("index.php", 301);
 }
 
-/* if (isset($_POST['function']) && $_POST['function'] == "save"){
-  if(isset($_POST['email']) && !empty($_POST['email'])){
-  //do stuff
-  }
-  if(isset($_POST['password']) && !empty($_POST['password'])){
-  //do stuff
-  }
-  if(isset($_POST['first_name']) && !empty($_POST['first_name'])){
-  //do stuff
-  }
-  if(isset($_POST['last_name']) && !empty($_POST['last_name'])){
-  //do stuff
-  }
-  } */
-
 if (isset($_POST['function']) && $_POST['function'] == "save") {
     foreach ($_POST as $key => $value) {
         if (!empty($value)) {
             $profile_edit_arr[$key] = $value;
         }
     }
-    
     echo 0;
 }

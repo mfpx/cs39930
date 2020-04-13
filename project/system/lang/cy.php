@@ -52,7 +52,7 @@ $enter_credentials = "Please enter your login details!";
  * This will be displayed when the website is disabled
  * for security reasons
  */
-$disabled_text = "The administrators have disabled the website due to security concerns!";
+$disabled_text = "Mae'r gweinyddwyr wedi anablu'r wefan oherwydd pryderon diogelwch!";
 
 /*
  * Edit profile button text
