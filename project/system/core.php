@@ -63,11 +63,11 @@ function redirect($location, $code) {
  */
 
 function is_loggedin($action) {
-    if ($action == 1) {
+    if ($action === 1) {
         if (!isset($_SESSION['uid']) && empty($_SESSION['uid'])) {
             redirect('index.php', 301);
         }
-    } else if ($action == 2) {
+    } else if ($action === 2) {
         if (isset($_SESSION['uid']) && !empty($_SESSION['uid'])) {
             redirect('home.php', 301);
         }

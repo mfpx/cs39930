@@ -3,6 +3,7 @@
  * Language selection
  * To create a new language, create a new file with the code of that language using English as a template.
  * E.g.: for Welsh, you would create a file called "cy.php" and then change the setting below to "cy".
+ * NOTE: If you specify a broken language file, the website will break!
  */
 
 $config['language'] = 'en';

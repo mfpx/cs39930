@@ -23,9 +23,9 @@ is_loggedin(2);
             $.ajax
                     ({
                         type: 'post',
-                        url: 'login.php',
+                        url: 'details.php',
                         data: {
-                            do_login: "do_login",
+                            function: "login",
                             email: email,
                             password: pass
                         },
@@ -35,12 +35,8 @@ is_loggedin(2);
                                 window.location.href = "home.php";
                             } else
                             {
-                                /*
-                                 * This uses notify.js notification library
-                                 * See: https://notifyjs.jpillora.com/
-                                 */
                                 $("#login-box").notify(
-                                        "Your email and/or password is incorrect",
+                                        "<?php echo $wrong_credentials; ?>",
                                         {
                                             position: "bottom center"
                                         });
@@ -56,7 +52,7 @@ is_loggedin(2);
              * This is used as fallback
              */
             $("#login-box").notify(
-                    "Please enter your login details",
+                    "<?php echo $enter_credentials; ?>",
                     {
                         position: "bottom center"
                     });
@@ -65,16 +61,16 @@ is_loggedin(2);
     }
 </script>
 <div id="login-box">
-    <form method="post" action="system/login.php" onsubmit="return do_login();">
+    <form method="post" onsubmit="return do_login();">
         <div id="login">
-            Login
+            <?php echo $login_text; ?>
         </div>
-        Email:<br />
+        <?php echo $email_field; ?>:<br />
         <input type="email" name="email" class="field" id="email" placeholder="name@example.com" required><br />
-        Password:<br />
+        <?php echo $password_field; ?>:<br />
         <input type="password" name="password" class="field" id="password" placeholder="••••••••" required><br />
-        <input type="submit" name="login" value="Submit" id="login_button">
+        <input type="submit" name="login" value="<?php echo $submit_button; ?>" id="login_button">
     </form>
     <br />
-    <a href="reset">Forgotten password?</a>
+    <a href="reset"><?php echo $forgotten_password; ?></a>
 </div>

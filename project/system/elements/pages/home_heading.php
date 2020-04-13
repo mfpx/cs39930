@@ -29,13 +29,13 @@ $connection = null;
         </div>
         <hr>
         <div id="menu">
-            <a class="right_button" onclick="return logout();">Logout</a>
+            <a class="right_button" onclick="return logout();"><?php echo $logout_button; ?></a>
             <a href="test.php">Test page 2</a>
             <a href="test.php">Test page 3</a>
             <a href="test.php">Test page 4</a>
             <?php
             if ($row['admin']) {
-                echo "<div class=\"right_button\"><a href=\"admin.php\">Admin</a></div>";
+                echo "<div class=\"right_button\"><a href=\"admin.php\">$admin_button</a></div>";
             }
             ?>
         </div>

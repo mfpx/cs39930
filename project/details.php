@@ -6,7 +6,7 @@ require 'system/database.php';
 require 'system/core.php';
 
 //If email and password were submitted
-if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevant, since we're only checking if it was submitted
+if (isset($_POST['function']) && $_POST['function'] == "login") {
     //Decoding base64 and sanitising email and password for special characters
     $email = base64_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     $password_in = base64_decode(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
@@ -18,8 +18,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevan
 
         $row = $st->fetch(PDO::FETCH_ASSOC);
         $password_db = $row['password'];
-        
-        if (!empty($row['email'])){
+
+        if (!empty($row['email'])) {
             $_SESSION['uid'] = $email; //Set a session variable 'uid' to email
             $_SESSION['doss'] = date("d/m/Y"); //DOSS - Date of session start
             $_SESSION['toss'] = date("h:i:sa"); //TOSS - Time of session start
@@ -33,7 +33,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) { //Filtering irrelevan
     login($password_in, $password_db);
 }
 
-function login($password, $hash){
+function login($password, $hash) {
     if (password_verify($password, $hash)) {
         echo 1;
     } else {
@@ -41,6 +41,31 @@ function login($password, $hash){
     }
 }
 
-if (isset($_POST['function']) && $_POST['function'] == "logout"){
+if (isset($_POST['function']) && $_POST['function'] == "logout") {
     logout("index.php", 301);
+}
+
+/* if (isset($_POST['function']) && $_POST['function'] == "save"){
+  if(isset($_POST['email']) && !empty($_POST['email'])){
+  //do stuff
+  }
+  if(isset($_POST['password']) && !empty($_POST['password'])){
+  //do stuff
+  }
+  if(isset($_POST['first_name']) && !empty($_POST['first_name'])){
+  //do stuff
+  }
+  if(isset($_POST['last_name']) && !empty($_POST['last_name'])){
+  //do stuff
+  }
+  } */
+
+if (isset($_POST['function']) && $_POST['function'] == "save") {
+    foreach ($_POST as $key => $value) {
+        if (!empty($value)) {
+            $profile_edit_arr[$key] = $value;
+        }
+    }
+    
+    echo 0;
 }
