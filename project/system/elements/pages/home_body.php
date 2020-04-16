@@ -70,8 +70,13 @@ $connection = null;
                         last_name: last_name
                     },
                     success: function (response) {
+                        alert(response);
                         if (response === '1') {
-                            window.location.href = "home.php"; //Reload the page for changes to show
+                            /*
+                             * Realoads the page for changes to show
+                             * This is easier than having to load every element again
+                             */
+                            location.reload(false);
                         } else if (response === '-2') { //If the script returned a "password mismatch" error
                             $("#change-form").notify(
                                     "<?php echo $password_mismatch; ?>",
@@ -80,7 +85,7 @@ $connection = null;
                                     });
                             /*
                              * Two lines below reset the password
-                             * input fields.
+                             * input fields if password doesn't match
                              */        
                             $("#password").val("");
                             $("#password_repeat").val("");

@@ -46,6 +46,7 @@ hr {
 
 #menu .right_button {
     float: right;
+    cursor: pointer;
 }
 
 #footer {

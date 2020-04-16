@@ -1,4 +1,7 @@
 <?php
+/*
+ * Code block taken from core.php
+ */
 if (!empty($config['language'])) {
     $lang_file = 'system/lang/' . $config['language'] . '.php'; //Init a variable with the language file path
     clearstatcache($lang_file); //Clears stat function cache for the language file

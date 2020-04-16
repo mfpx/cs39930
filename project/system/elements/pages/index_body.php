@@ -6,17 +6,8 @@ is_loggedin(2);
 <script type="text/javascript">
     function do_login()
     {
-        var email_plain = $("#email").val();
-        var pass_plain = $("#password").val();
-
-        /*
-         * Adds a layer of obfuscation when sending data
-         * by encoding the data using base64
-         * Might also help with certain character encoding
-         * THIS IS NOT ENCRYPTION!
-         */
-        var pass = btoa(pass_plain);
-        var email = btoa(email_plain);
+        var email = $("#email").val();
+        var pass = $("#password").val();
 
         if (email !== "" && pass !== "")
         {
