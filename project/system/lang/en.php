@@ -123,3 +123,23 @@ $forgotten_password = "Forgotten password?";
  * Logout button text
  */
 $logout_button = "Logout";
+
+/*
+ * Announcement text
+ */
+$announce = "Announcement";
+
+/*
+ * Welcome text
+ */
+$welcome = "Welcome";
+
+/*
+ * No announcement text
+ */
+$announce_blank = "There are no announcements!";
+
+/*
+ * Account disabled text
+ */
+$account_disabled = "Your account has been disabled!";

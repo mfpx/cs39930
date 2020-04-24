@@ -1,4 +1,5 @@
 <?php
+
 require 'config.php';
 
 //PDO declarations
@@ -7,9 +8,14 @@ $database = $db_config['database'];
 
 //Database connection
 try {
+    //Creates a new database instance
     $connection = new PDO("mysql:host=$server; dbname=$database", $db_config['username'], $db_config['password']);
-    $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Sets error mode
+    //Sets error mode to exceptions
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return 1;
 } catch (PDOException $e) {
-    return $e->getMessage(); //Returns the error message for debugging
+    if ($config['development']) {
+        //Returns the error message for debugging
+        return $e->getMessage();
+    }
 }

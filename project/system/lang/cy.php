@@ -1,12 +1,12 @@
 <?php
 /*
- * British English - Template
+ * Cymraeg (Cymru)
  */
 
 /*
  * This will appear at the top of every page, in emails etc...
  */
-$title = "Crustacean Database";
+$title = "Cronfa Ddata Cramenogion";
 
 /*
  * Copyright information will be displayed
@@ -17,8 +17,8 @@ $copyright = "Dafydd Stumbra &copy; 2020";
 /*
  * Menu items
  */
-$home = "Home"; //First element
-$admin_button = "Admin"; //Admin button
+$home = "Cartref"; //First element
+$admin_button = "Gweinyddiaeth"; //Admin button
 
 /*
  * This will be displayed if the login fails
@@ -57,69 +57,89 @@ $disabled_text = "Mae'r gweinyddwyr wedi anablu'r wefan oherwydd pryderon diogel
 /*
  * Edit profile button text
  */
-$edit_profile = "Edit profile";
+$edit_profile = "Golygu Proffil";
 
 /*
  * Session started button text
  */
-$session_started = "Session started";
+$session_started = "Dechreuodd y sesiwn";
 
 /*
  * Email field name
  */
-$email_field = "Email";
+$email_field = "Ebost";
 
 /*
  * First name field
  */
-$first_name_field = "First name";
+$first_name_field = "Enw cyntaf";
 
 /*
  * Last name field
  */
-$last_name_field = "Last name";
+$last_name_field = "Cyfenw";
 
 /*
  * New password field
  */
-$new_password_field = "New password";
+$new_password_field = "Cyfrinair newydd";
 
 /*
  * Repeat new password field
  */
-$new_password_repeat_field = "Repeat new password";
+$new_password_repeat_field = "Ailadrodd cyfrinair newydd";
 
 /*
  * Password field
  */
-$password_field = "Password";
+$password_field = "Cyfrinair";
 
 /*
  * Save button text
  */
-$save_button = "Save";
+$save_button = "Cadw";
 
 /*
  * Cancel button text
  */
-$cancel_button = "Cancel";
+$cancel_button = "Canslo";
 
 /*
  * Submit button text
  */
-$submit_button = "Submit";
+$submit_button = "Cyflwyno";
 
 /*
  * Login box title
  */
-$login_text = "Login";
+$login_text = "Mewngofnodi";
 
 /*
  * Forgotten password text
  */
-$forgotten_password = "Forgotten password?";
+$forgotten_password = "Wedi anghofio eich cyfrinair?";
 
 /*
  * Logout button text
  */
-$logout_button = "Logout";
+$logout_button = "Allgofnodi";
+
+/*
+ * Announcement text
+ */
+$announce = "Cyhoeddiad";
+
+/*
+ * Welcome text
+ */
+$welcome = "Croeso";
+
+/*
+ * No announcement text
+ */
+$announce_blank = "There are no announcements!";
+
+/*
+ * Account disabled text
+ */
+$account_disabled = "Your account has been disabled!";

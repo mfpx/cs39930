@@ -6,11 +6,9 @@
     </head>
     <body>
         <div id="heading">
-            <a href="index.php">
-                <?php echo $title; ?>
-            </a>
+            <a href="index.php"><?php echo $title; ?></a>
         </div>
-        <hr>
+        <hr class="override">
         <div id="menu">
             <a href="index.php"><?php echo $home; ?></a>
             <a href="test.php">Test page</a>

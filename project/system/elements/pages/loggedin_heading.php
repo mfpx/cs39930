@@ -23,14 +23,12 @@ $connection = null;
     </head>
     <body>
         <div id="heading">
-            <a href="index.php">
-                <?php echo $title; ?>
-            </a>
+            <a href="index.php"><?php echo $title; ?></a>
         </div>
-        <hr>
+        <hr class="override">
         <div id="menu">
             <a class="right_button" onclick="return logout();"><?php echo $logout_button; ?></a>
-            <a href="test.php">Test page 2</a>
+            <a href="browse.php">Browse</a>
             <a href="test.php">Test page 3</a>
             <a href="test.php">Test page 4</a>
             <?php

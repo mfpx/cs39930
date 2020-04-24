@@ -14,18 +14,23 @@ is_loggedin(2);
             $.ajax
                     ({
                         type: 'post',
-                        url: 'details.php',
+                        url: 'login.php',
                         data: {
                             function: "login",
                             email: email,
                             password: pass
                         },
                         success: function (response) {
-                            if (response === '1')
-                            {
+                            //alert(response);
+                            if (response === '1') {
                                 window.location.href = "home.php";
-                            } else
-                            {
+                            } else if (response === '-1') {
+                                $("#login-box").notify(
+                                        "<?php echo $account_disabled; ?>",
+                                        {
+                                            position: "bottom center"
+                                        });
+                            } else {
                                 $("#login-box").notify(
                                         "<?php echo $wrong_credentials; ?>",
                                         {
@@ -36,8 +41,8 @@ is_loggedin(2);
                     });
         } else {
             /*
-             * This shouldnt be invoked
-             * as the form doesnt allow
+             * This shouldn't be invoked
+             * as the form doesn't allow
              * submission of blank fields
              * 
              * This is used as fallback

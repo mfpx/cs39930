@@ -14,31 +14,26 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
+try {
+    $user_motd = $connection->query('SELECT user_announcement FROM system');
+    $user_motd->execute();
+
+    $result = $user_motd->fetch(PDO::FETCH_ASSOC);
+    if (empty($result['user_announcement'])) {
+        $announcement = $announce_blank;
+    } else {
+        $announcement = $result['user_announcement'];
+    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+
 $connection = null;
 ?>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/notify.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
 <script type="text/javascript">
-    function logout()
-    {
-        $.ajax
-                ({
-                    type: 'post',
-                    url: 'details.php',
-                    data: {
-                        function: "logout"
-                    },
-                    success: function (response) {
-                        if (response) {
-                            window.location.href = "index.php";
-                        } else {
-                            $.notify("<?php echo $logout_fail; ?>"); //This shouldn't happen!
-                        }
-                    }
-                });
-        return false;
-    }
-
     $(document).ready(function () {
         $("#change-button-show").click(function () {
             $("#change-form").show();
@@ -86,7 +81,7 @@ $connection = null;
                             /*
                              * Two lines below reset the password
                              * input fields if password doesn't match
-                             */        
+                             */
                             $("#password").val("");
                             $("#password_repeat").val("");
                         } else {
@@ -102,21 +97,25 @@ $connection = null;
     }
 </script>
 <div id="welcome">
-    Welcome, <?php echo $row['first_name'] . " " . $row['last_name']; ?>
+    <?php echo $welcome . ', ' . $row['first_name'] . " " . $row['last_name']; ?>
 </div>
 <div id="session">
     <?php echo $session_started; ?>: <?php echo $_SESSION['doss'] . ' ' . $_SESSION['toss']; ?>
 </div>
 <button id="change-button-show"><?php echo $edit_profile; ?></button>
+<div class="motd-wrapper">
+    <div class="ann-title"><?php echo $announce; ?>:</div>
+    <div id="user-motd"><?php echo $announcement; ?></div>
+</div>
 <div id="overlay"></div>
 <div id="change-form">
     <form onsubmit="return save_changes();" method="post">
         <?php echo $email_field; ?>:<br />
-        <input type="text" id="email" placeholder="<?php echo $email; ?>"><br />
+        <input type="email" id="email" value="<?php echo $email; ?>"><br />
         <?php echo $first_name_field; ?>:<br />
-        <input type="text" id="first_name" placeholder="<?php echo $row['first_name']; ?>"><br />
+        <input type="text" id="first_name" value="<?php echo $row['first_name']; ?>"><br />
         <?php echo $last_name_field; ?>:<br />
-        <input type="text" id="last_name" placeholder="<?php echo $row['last_name']; ?>"><br />
+        <input type="text" id="last_name" value="<?php echo $row['last_name']; ?>"><br />
         <?php echo $new_password_field; ?>:<br />
         <input type="password" id="password"><br />
         <?php echo $new_password_repeat_field; ?>:<br />
