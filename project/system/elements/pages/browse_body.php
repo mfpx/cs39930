@@ -12,6 +12,12 @@ try {
     $st->execute();
 
     $row = $st->fetch(PDO::FETCH_ASSOC);
+    
+    if($row['sex'] == 1){
+        $sex = $male;
+    } else {
+        $sex = $female;
+    }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -26,12 +32,34 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-//var_dump($row);
-if (!empty($img_row['image'])) {
-    echo '<img height="240" width="427" src="data:image/jpeg;base64,' . base64_encode($img_row['image']) . '"/>';
-    echo '<div id="mapdiv"></div>';
-}
 ?>
+<div class="info-container">
+    <div class="intro-text">
+        <p>
+            <?php echo $image_name . ': ' . $row['img_name'] ?> <br />
+            <?php echo $species . ': ' . $row['species'] ?> <br />
+            <?php echo $sex_text . ': ' . $sex ?> <br />
+            <?php echo $abdomen_length . ': ' . $row['abdomen_length'] ?> <br />
+            <?php echo $abdomen_width . ': ' . $row['abdomen_width'] ?> <br />
+            <?php echo $ship_name . ': ' . $row['boat'] ?><br />
+            <?php echo $latitude . ': ' . $row['coords_lat'] . ' ' . $cardinals_north ?><br />
+            <?php echo $longitude . ': ' . $row['coords_long'] . ' ' . $cardinals_west ?><br />
+        </p>
+        <div id="mapdiv"></div>
+        <div class="buttons">
+            <button class="back">Back</button>
+            <button class="back">Back</button>
+            <button class="back">Back</button>
+        </div>
+    </div>
+    <?php
+    if (!empty($img_row['image'])) {
+        echo '<div class = "references">
+        <img src="data:image/jpeg;base64,' . base64_encode($img_row['image']) . '" />
+        </div>';
+    }
+    ?>
+</div>
 <script>
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());

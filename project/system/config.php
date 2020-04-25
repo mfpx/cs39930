@@ -7,7 +7,7 @@
  *       To change this, edit 'core.php'.
  */
 
-$config['language'] = 'cy';
+$config['language'] = 'en';
 
 /*
  * Is the system in development mode?

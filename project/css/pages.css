@@ -239,3 +239,77 @@ button {
     top: 50%;
     width: 100%;
 }
+
+/*NEW*/
+.info-container {
+  display: flex;
+  flex-direction: row;
+}
+.intro-text {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 40rem;
+  line-height: 1.5;
+}
+.intro-text p {
+  font-size: 18pt;
+}
+.intro-text button {
+  margin-top: 20px;
+}
+.references {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.references img {
+  width: 80%;
+}
+
+.back {
+  height: 3rem;
+  width: 100%;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.buttons button {
+  margin: 20px 25px;
+  width: 120px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 28rem);
+  grid-column-gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.specs {
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  background: #323232;
+  color: #f2f2f2;
+}
+.specs button {
+  width: 100px;
+  margin-left: 5px;
+  background: #c7c7c7;
+  color: #000;
+}
+.desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.gallery img {
+  width: 80%;
+}

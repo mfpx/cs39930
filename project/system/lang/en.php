@@ -143,3 +143,59 @@ $announce_blank = "There are no announcements!";
  * Account disabled text
  */
 $account_disabled = "Your account has been disabled!";
+
+/*
+ * Cardinal direction - North - Short
+ */
+$cardinals_north = "N";
+
+/*
+ * Cardinal direction - West - Short
+ */
+$cardinals_west = "W";
+
+/*
+ * Image name text
+ */
+$image_name = "Image name";
+
+/*
+ * Species text
+ */
+$species = "Species";
+
+/*
+ * Sex text
+ */
+$sex_text = "Sex";
+
+/*
+ * Abdomen length text
+ */
+$abdomen_length = "Abdomen length";
+
+/*
+ * Abdomen width text
+ */
+$abdomen_width = "Abdomen width";
+
+/*
+ * Ship name text
+ */
+$ship_name = "Ship name";
+
+/*
+ * Latitude text
+ */
+$latitude = "Latitude";
+
+/*
+ * Longitude text
+ */
+$longitude = "Longitude";
+
+/*
+ * Genders - Male and Female
+ */
+$male = "Male";
+$female = "Female";

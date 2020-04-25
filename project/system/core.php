@@ -43,6 +43,13 @@ if (!empty($config['language'])) {
     $lang_file = 'system/lang/' . $config['language'] . '.php'; //Init a variable with the language file path
     clearstatcache($lang_file); //Clears stat function cache for the language file
 
+    /*
+     * Initialise the language variable as null
+     * This is temporary and will be overwritten later
+     * Quick workaround to prevent unknown index warning
+     */
+    $_SESSION['language'] = NULL;
+
     if ($_SESSION['language'] !== $config['language'] && file_exists($lang_file)) {
         $_SESSION['language'] = $config['language']; //Set user session language to the site default
         include $lang_file; //Include the appropriate language file

@@ -143,3 +143,59 @@ $announce_blank = "There are no announcements!";
  * Account disabled text
  */
 $account_disabled = "Your account has been disabled!";
+
+/*
+ * Cardinal direction - North - Short
+ */
+$cardinals_north = "Gog";
+
+/*
+ * Cardinal direction - West - Short
+ */
+$cardinals_west = "Gor";
+
+/*
+ * Image name text
+ */
+$image_name = "Enw'r ddelwedd";
+
+/*
+ * Species text
+ */
+$species = "Rhywogaethau";
+
+/*
+ * Sex text
+ */
+$sex_text = "Rhyw";
+
+/*
+ * Abdomen length text
+ */
+$abdomen_length = "Hyd yr abdomen";
+
+/*
+ * Abdomen width text
+ */
+$abdomen_width = "Lled abdomen";
+
+/*
+ * Ship name text
+ */
+$ship_name = "Enw llong";
+
+/*
+ * Latitude text
+ */
+$latitude = "Lledred";
+
+/*
+ * Longitude text
+ */
+$longitude = "Hydred";
+
+/*
+ * Genders - Male and Female
+ */
+$male = "Gwryw";
+$female = "Benyw";
