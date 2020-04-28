@@ -57,7 +57,7 @@ a:link {
     cursor: pointer;
 }
 
-#footer {
+footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -84,6 +84,14 @@ a:link {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 15%;
+}
+
+#login-box #p-reset {
+    border-radius: 0;
+    padding: 0;
+    background: #f3f3f3;
+    color: blue;
+    font-size: 100%;
 }
 
 #welcome {
@@ -160,20 +168,7 @@ button {
     opacity: 0.5;
 }
 
-/*#change-form { original backup
-    border: transparent;
-    background: #f3f3f3;
-    border-radius: 10px;
-    padding: 5%;
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 1%;
-}*/
-
-#change-form {
+#change-form, #reset-form{
     font-size: 110%;
     border: transparent;
     background: #f3f3f3;
@@ -186,19 +181,7 @@ button {
     transform: translate(-50%, -50%);
 }
 
-/*#change-form { marius
-    background: #d0dcdb;
-    padding: 5%;
-    min-width: 30%;
-    height: 35rem;
-    border-radius: 10px;
-    display: none;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-}*/
-
-#change-form form input{
+#change-form form input, #reset-form form input{
     margin-top: 1%;
     margin-bottom: 5%;
     width: 100%;
@@ -211,7 +194,7 @@ button {
     margin: 1%;
 }
 
-#change-form button {
+#change-form button, #reset-form button {
     /*float: left;*/
     /*margin: 1%;*/
     margin-bottom: 1%;
@@ -221,7 +204,7 @@ button {
     width: 100%;
 }
 
-#change-button-hide {
+#change-button-hide, #reset-form-hide {
     /*float: left;*/
     /*margin: 1%;*/
     position: relative;
@@ -245,6 +228,7 @@ button {
   display: flex;
   flex-direction: row;
 }
+
 .intro-text {
   display: flex;
   text-align: center;
@@ -253,17 +237,21 @@ button {
   flex: 1 1 40rem;
   line-height: 1.5;
 }
+
 .intro-text p {
   font-size: 18pt;
 }
+
 .intro-text button {
   margin-top: 20px;
 }
+
 .references {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .references img {
   width: 80%;
 }
@@ -272,12 +260,14 @@ button {
   height: 3rem;
   width: 100%;
 }
+
 .buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
 }
+
 .buttons button {
   margin: 20px 25px;
   width: 120px;
@@ -290,6 +280,7 @@ button {
   width: 100%;
   justify-content: center;
 }
+
 .specs {
   margin-bottom: 10px;
   padding: 10px;
@@ -297,12 +288,14 @@ button {
   background: #323232;
   color: #f2f2f2;
 }
+
 .specs button {
   width: 100px;
   margin-left: 5px;
   background: #c7c7c7;
   color: #000;
 }
+
 .desc {
   display: flex;
   justify-content: center;
@@ -310,6 +303,7 @@ button {
   flex-direction: column;
   text-align: center;
 }
+
 .gallery img {
   width: 80%;
 }

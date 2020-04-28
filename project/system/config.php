@@ -10,6 +10,13 @@
 $config['language'] = 'en';
 
 /*
+ * Sender email
+ * This will be used when sending emails
+ */
+
+$config['sender'] = "noreply@aber.ac.uk";
+
+/*
  * Is the system in development mode?
  * This will show all errors, and system notifications.
  */

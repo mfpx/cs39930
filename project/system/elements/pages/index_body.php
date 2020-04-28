@@ -1,9 +1,21 @@
 <?php
 is_loggedin(2);
 ?>
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/notify.js"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#p-reset").click(function () {
+            $("#reset-form").show();
+            $("#overlay").show();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#reset-form-hide").click(function () {
+            $("#reset-form").hide();
+            $("#overlay").hide();
+        });
+    });
+
     function do_login()
     {
         var email = $("#email").val();
@@ -55,6 +67,57 @@ is_loggedin(2);
         }
         return false;
     }
+
+    function do_reset()
+    {
+        var email = $("#reset_email").val();
+
+        if (email !== "")
+        {
+            $.ajax
+                    ({
+                        type: 'post',
+                        url: 'reset.php',
+                        data: {
+                            function: "reset_req",
+                            email: email
+                        },
+                        success: function (response) {
+                            //alert(response);
+                            if (response === '1') {
+                                $("#reset-form").hide();
+                                $("#overlay").hide();
+                                $("#login-box").notify(
+                                        "If the email provided is correct, you will receive an email!",
+                                        {
+                                            position: "bottom center",
+                                            className: "info"
+                                        });
+                            } else {
+                                $("#reset-form").notify(
+                                        "Something went wrong! Please try again later!",
+                                        {
+                                            position: "bottom center"
+                                        });
+                            }
+                        }
+                    });
+        } else {
+            /*
+             * This shouldn't be invoked
+             * as the form doesn't allow
+             * submission of blank fields
+             * 
+             * This is used as fallback
+             */
+            $("#reset-form").notify(
+                    "Please enter your email!",
+                    {
+                        position: "bottom center"
+                    });
+        }
+        return false;
+    }
 </script>
 <div id="login-box">
     <form method="post" onsubmit="return do_login();">
@@ -68,5 +131,17 @@ is_loggedin(2);
         <input type="submit" name="login" value="<?php echo $submit_button; ?>" id="login_button">
     </form>
     <br />
-    <a href="reset"><?php echo $forgotten_password; ?></a>
+    <button id="p-reset"><?php echo $forgotten_password; ?></button>
 </div>
+<div id="overlay"></div>
+<div id="reset-form">
+    <form onsubmit="return do_reset();" method="post">
+        <?php echo $email_field; ?>:<br />
+        <input type="email" id="reset_email" placeholder="name@example.com" required><br />
+        <button><?php echo $reset_button; ?></button>
+    </form>
+    <button id="reset-form-hide"><?php echo $cancel_button; ?></button>
+</div>
+</body>
+</html>
+

@@ -49,6 +49,13 @@ $wrong_credentials = "Your email and/or password is incorrect";
 $enter_credentials = "Please enter your login details!";
 
 /*
+ * FALLBACK
+ * This will be shown when
+ * the user fails to enter new passwords
+ */
+$enter_passwords = "Please enter your new password!";
+
+/*
  * This will be displayed when the website is disabled
  * for security reasons
  */
@@ -108,6 +115,11 @@ $cancel_button = "Cancel";
  * Submit button text
  */
 $submit_button = "Submit";
+
+/*
+ * Reset button text
+ */
+$reset_button = "Reset";
 
 /*
  * Login box title
@@ -199,3 +211,18 @@ $longitude = "Longitude";
  */
 $male = "Male";
 $female = "Female";
+
+/*
+ * Password reset text
+ */
+$p_reset_text = "Password reset";
+
+/*
+ * Password change text
+ */
+$password_change = "Password change";
+
+/*
+ * Successful password change and redirect text
+ */
+$p_change_success = "Your password was changed successfully! You will be redirected shortly";

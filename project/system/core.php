@@ -71,8 +71,10 @@ if (!empty($config['language'])) {
  * @param Integer $statusCode Status code to ues when redirecting
  */
 function logout($url, $statusCode) {
+    $cookie = filter_input(INPUT_COOKIE, 'PHPSESSID', FILTER_SANITIZE_STRING); //Filter cookie to make sure it's safe
+    
     session_destroy(); //Destroys the session 
-    if (isset($_COOKIE['PHPSESSID'])) { //Checks if PHPSESSID cookie is set
+    if (isset($cookie)) { //Checks if PHPSESSID cookie is set
         setcookie('PHPSESSID', null, -1, '/'); //Invalidates PHPSESSID cookie
     }
     redirect($url, $statusCode); //Generic redirect using parameters provided
@@ -88,18 +90,21 @@ function redirect($location, $code) {
     exit(); //Kills the rest of the script, just in case
 }
 
-/*
+/**
  * Checks if the user is logged in
- * i.e. if the email exists in $_SESSION superglobal
+ * @param Integer $action Specifies the action to be taken when application is called
  */
-
 function is_loggedin($action) {
     if ($action === 1) {
+        //If email doesn't exist in superglobal, and is empty
         if (!isset($_SESSION['uid']) && empty($_SESSION['uid'])) {
+            //Redirect to index.php
             redirect('index.php', 301);
         }
     } else if ($action === 2) {
+        //If email exists in superglobal, and isn't empty
         if (isset($_SESSION['uid']) && !empty($_SESSION['uid'])) {
+            //Redirect to home.php
             redirect('home.php', 301);
         }
     }

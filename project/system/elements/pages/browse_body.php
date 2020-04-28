@@ -1,6 +1,3 @@
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/logout.js"></script>
-<script type="text/javascript" src="//openlayers.org/api/OpenLayers.js"></script>
 <?php
 is_loggedin(1);
 require './system/database.php';
@@ -79,3 +76,5 @@ try {
 
     map.setCenter(lonLat, zoom);
 </script>
+</body>
+</html>

@@ -19,6 +19,9 @@ $connection = null;
 <html lang="<?php echo $_SESSION['language']; ?>">
     <head>  
         <link rel="stylesheet" href="css/pages.css">
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script type="text/javascript" src="//openlayers.org/api/OpenLayers.js"></script>
         <title><?php echo $title; ?></title>
     </head>
     <body>
@@ -37,5 +40,3 @@ $connection = null;
             }
             ?>
         </div>
-    </body>
-</html>

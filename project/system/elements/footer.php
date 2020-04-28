@@ -1,11 +1,10 @@
 <?php
-if ($config['footer']){
+
+if ($config['footer']) {
     echo
     '
-    <div id="footer">
+    <footer>
         ' . $copyright . '
-    </div>
+    </footer>
     ';
 }
-?>
-
