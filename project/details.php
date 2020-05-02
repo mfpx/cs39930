@@ -76,6 +76,19 @@ if (isset($_POST['function']) && $_POST['function'] == "save") {
     }
 }
 
+if (isset($_POST['function']) && $_POST['function'] == "form_fill") {
+    try{
+        $st = $connection->prepare('SELECT email, first_name, last_name, admin, disabled, api_key FROM users WHERE email = :email');
+        $st->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+        $st->execute();
+        
+        $result = $st->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    } catch (Exception $ex) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 function password_match($pass, $pass_repeat) {
     if ($pass !== $pass_repeat) {
         echo -2;

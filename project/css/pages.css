@@ -10,6 +10,26 @@ hr.override {
     margin-bottom: 0;
 }
 
+table {
+    border-collapse: collapse;
+    padding: 0 20% 0 20%;
+}
+
+table th {
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+table td {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+table td > button {
+    margin-left: 20%;
+    padding: 7px 100% 7px 100%;
+}
+
 #heading {
     padding: 10px;
     text-align: center;
@@ -19,8 +39,8 @@ hr.override {
 }
 
 a:link {
-  color: blue;
-  text-decoration: none;
+    color: blue;
+    text-decoration: none;
 }
 
 #heading a {
@@ -187,6 +207,10 @@ button {
     width: 100%;
 }
 
+#change-form form input[type="checkbox"]{
+    /*float: right;*/
+}
+
 #change-button-show {
     float: left;
     position: relative;
@@ -225,85 +249,85 @@ button {
 
 /*NEW*/
 .info-container {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .intro-text {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 40rem;
-  line-height: 1.5;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 40rem;
+    line-height: 1.5;
 }
 
 .intro-text p {
-  font-size: 18pt;
+    font-size: 18pt;
 }
 
 .intro-text button {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .references {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .references img {
-  width: 80%;
+    width: 80%;
 }
 
 .back {
-  height: 3rem;
-  width: 100%;
+    height: 3rem;
+    width: 100%;
 }
 
 .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 .buttons button {
-  margin: 20px 25px;
-  width: 120px;
+    margin: 20px 25px;
+    width: 120px;
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 28rem);
-  grid-column-gap: 10px;
-  width: 100%;
-  justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 28rem);
+    grid-column-gap: 10px;
+    width: 100%;
+    justify-content: center;
 }
 
 .specs {
-  margin-bottom: 10px;
-  padding: 10px;
-  text-align: center;
-  background: #323232;
-  color: #f2f2f2;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    background: #323232;
+    color: #f2f2f2;
 }
 
 .specs button {
-  width: 100px;
-  margin-left: 5px;
-  background: #c7c7c7;
-  color: #000;
+    width: 100px;
+    margin-left: 5px;
+    background: #c7c7c7;
+    color: #000;
 }
 
 .desc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .gallery img {
-  width: 80%;
+    width: 80%;
 }

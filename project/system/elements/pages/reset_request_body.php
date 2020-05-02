@@ -89,7 +89,7 @@ if ($row['valid'] != 1 || empty($row['valid'])) {
         </div>
         <input type="hidden" value="<?php echo filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING); ?>" id="key">
         <?php echo $new_password_field; ?>:<br />
-        <input type="password" name="password class="field" id="password" placeholder="••••••••" required><br />
+        <input type="password" name="password" class="field" id="password" placeholder="••••••••" required><br />
         <?php echo $new_password_repeat_field; ?>:<br />
         <input type="password" name="password" class="field" id="password_repeat" placeholder="••••••••" required><br />
         <input type="submit" value="<?php echo $submit_button; ?>" id="login_button">

@@ -17,6 +17,13 @@ $config['language'] = 'en';
 $config['sender'] = "noreply@aber.ac.uk";
 
 /*
+ * Contact email
+ * This is the email where all messages from
+ * the "Contact Us" page will be sent to
+ */
+$config['contact_email'] = "dec21@aber.ac.uk";
+
+/*
  * Is the system in development mode?
  * This will show all errors, and system notifications.
  */

@@ -17,8 +17,10 @@ $copyright = "Dafydd Stumbra &copy; 2020";
 /*
  * Menu items
  */
-$home = "Home"; //First element
+$home = "Home"; //Home button
+$contact_button = "Contact us"; //Contact us button
 $admin_button = "Admin"; //Admin button
+$logout_button = "Logout"; //Logout button
 
 /*
  * This will be displayed if the login fails
@@ -56,6 +58,13 @@ $enter_credentials = "Please enter your login details!";
 $enter_passwords = "Please enter your new password!";
 
 /*
+ * FALLBACK
+ * This will be shown when
+ * the user fails to fill in a form
+ */
+$fill_form = "Please fill in the form!";
+
+/*
  * This will be displayed when the website is disabled
  * for security reasons
  */
@@ -85,6 +94,11 @@ $first_name_field = "First name";
  * Last name field
  */
 $last_name_field = "Last name";
+
+/*
+ * Name generic field
+ */
+$name = "Name";
 
 /*
  * New password field
@@ -130,11 +144,6 @@ $login_text = "Login";
  * Forgotten password text
  */
 $forgotten_password = "Forgotten password?";
-
-/*
- * Logout button text
- */
-$logout_button = "Logout";
 
 /*
  * Announcement text
@@ -226,3 +235,33 @@ $password_change = "Password change";
  * Successful password change and redirect text
  */
 $p_change_success = "Your password was changed successfully! You will be redirected shortly";
+
+/*
+ * Contact page heading text
+ */
+$contact_heading = "Contact Us";
+
+/*
+ * Message text
+ */
+$message = "Message";
+
+/*
+ * Please enter your message text
+ */
+$enter_message = "Please enter your message!";
+
+/*
+ * Email sent text
+ */
+$email_sent = "Message sent successfully!";
+
+/*
+ * Email not delivered text
+ */
+$email_not_sent = "Message was not delivered!";
+
+/*
+ * reCaptcha validation fail text
+ */
+$recaptcha_failed = "reCaptcha validation failed!";

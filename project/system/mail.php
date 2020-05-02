@@ -13,3 +13,18 @@ function reset_mail($email, $token, $fn, $ln) {
         return false;
     }
 }
+
+function send_mail($email, $subject, $message, $name){
+    include 'config.php';
+    
+    $sender = $config['sender'];
+    $receiver = $config['contact_email'];
+    $msg = "Hello,\nEmail from: $email\n\nA message from $name:\n$message";
+    $headers = 'From:' . $sender;
+    
+    if (mail($receiver, $subject, $msg, $headers)){
+        return true;
+    } else {
+        return false;
+    }
+}

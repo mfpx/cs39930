@@ -32,7 +32,7 @@ $connection = null;
         <div id="menu">
             <a class="right_button" onclick="return logout();"><?php echo $logout_button; ?></a>
             <a href="home.php"><?php echo $home; ?></a>
-            <a href="test.php">Test page 3</a>
+            <a href="contact.php"><?php echo $contact_button; ?></a>
             <a href="test.php">Test page 4</a>
             <?php
             if ($row['admin']) {

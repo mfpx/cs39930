@@ -72,7 +72,7 @@ if (!empty($config['language'])) {
  */
 function logout($url, $statusCode) {
     $cookie = filter_input(INPUT_COOKIE, 'PHPSESSID', FILTER_SANITIZE_STRING); //Filter cookie to make sure it's safe
-    
+
     session_destroy(); //Destroys the session 
     if (isset($cookie)) { //Checks if PHPSESSID cookie is set
         setcookie('PHPSESSID', null, -1, '/'); //Invalidates PHPSESSID cookie
@@ -108,4 +108,24 @@ function is_loggedin($action) {
             redirect('home.php', 301);
         }
     }
+}
+
+function is_admin($email) {
+    include 'database.php';
+
+    try {
+        $st = $connection->prepare('SELECT admin FROM users WHERE email = :email');
+        $st->bindValue(':email', $email, PDO::PARAM_STR);
+        $st->execute();
+
+        $row = $st->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        if ($config['development']) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    $connection = null;
+
+    return $row['admin'];
 }
