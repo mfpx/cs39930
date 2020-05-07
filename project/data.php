@@ -35,7 +35,7 @@ try {
 }
 
 //Tells the user their account is disabled and kills the script
-if($api_row['disabled']){
+if ($api_row['disabled']) {
     echo 'Account disabled!';
     die();
 }
@@ -70,11 +70,19 @@ if ($api_key === $api_row['api_key'] && !empty($api_key) && !empty($img_name)) {
             }
         }
 
-        //Sets website header to the MIME type retrieved from the database
-        header('Content-type: ' . $img_row['mime']);
-        //Echoes image information from the database
-        echo $img_row['image'];
+        //If no image was returned
+        if (empty($img_row['image'])) {
+            //Display a black image
+            header('Content-type: image/jpeg');
+            readfile('media/empty.jpg');
+        } else {
+            //Sets website header to the MIME type retrieved from the database
+            header('Content-type: ' . $img_row['mime']);
+            //Echoes image information from the database
+            echo $img_row['image'];
+        }
     } else {
+        //If the record ID exists in the database
         if (!empty($data_row['img_name'])) {
             //Echoes JSON-encoded array information
             echo json_encode($data_row);

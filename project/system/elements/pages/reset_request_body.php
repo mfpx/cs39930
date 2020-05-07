@@ -96,4 +96,3 @@ if ($row['valid'] != 1 || empty($row['valid'])) {
     </form>
 </div>
 </body>
-</html>

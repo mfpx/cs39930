@@ -20,6 +20,7 @@ is_loggedin(2);
     {
         var email = $("#email").val();
         var pass = $("#password").val();
+        var token = $("#token").val();
 
         if (email !== "" && pass !== "")
         {
@@ -30,7 +31,8 @@ is_loggedin(2);
                         data: {
                             function: "login",
                             email: email,
-                            password: pass
+                            password: pass,
+                            token: token
                         },
                         success: function (response) {
                             //alert(response);
@@ -71,6 +73,7 @@ is_loggedin(2);
     function do_reset()
     {
         var email = $("#reset_email").val();
+        var token = $("#token").val();
 
         if (email !== "")
         {
@@ -80,10 +83,11 @@ is_loggedin(2);
                         url: 'reset.php',
                         data: {
                             function: "reset_req",
-                            email: email
+                            email: email,
+                            token: token
                         },
                         success: function (response) {
-                            //alert(response);
+                            alert(response);
                             if (response === '1') {
                                 $("#reset-form").hide();
                                 $("#overlay").hide();
@@ -128,6 +132,7 @@ is_loggedin(2);
         <input type="email" name="email" class="field" id="email" placeholder="name@example.com" required><br />
         <?php echo $password_field; ?>:<br />
         <input type="password" name="password" class="field" id="password" placeholder="••••••••" required><br />
+        <input type="hidden" id="token" value="<?php echo $_SESSION['token']; ?>">
         <input type="submit" name="login" value="<?php echo $submit_button; ?>" id="login_button">
     </form>
     <br />
@@ -138,10 +143,11 @@ is_loggedin(2);
     <form onsubmit="return do_reset();" method="post">
         <?php echo $email_field; ?>:<br />
         <input type="email" id="reset_email" placeholder="name@example.com" required><br />
+        <input type="hidden" id="token" value="<?php echo $_SESSION['token']; ?>">
         <button><?php echo $reset_button; ?></button>
     </form>
     <button id="reset-form-hide"><?php echo $cancel_button; ?></button>
 </div>
 </body>
-</html>
+
 

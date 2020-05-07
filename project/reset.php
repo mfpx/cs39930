@@ -1,10 +1,13 @@
 <?php
 
+session_start();
+
 require 'system/database.php';
 include 'system/mail.php';
+require 'system/security.php';
 
 //If email and function were submitted
-if (isset($_POST['function']) && $_POST['function'] == "reset_req" && isset($_POST['email'])) {
+if (isset($_POST['function']) && $_POST['function'] == "reset_req" && isset($_POST['email']) && csrf_verify($_POST['token'])) {
     //Sanitising email and password for special characters
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
@@ -29,7 +32,7 @@ if (isset($_POST['function']) && $_POST['function'] == "reset_req" && isset($_PO
         $pr_st->execute();
 
         $reset_row = $pr_st->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         if ($config['development']) {
             echo "Error: " . $e->getMessage();
         } else {
@@ -71,8 +74,10 @@ if (isset($_POST['function']) && $_POST['function'] == "reset_req" && isset($_PO
                 } else {
                     echo 0;
                 }
+            } else {
+                echo 0;
             }
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             if ($config['development']) {
                 echo "Error: " . $e->getMessage();
             } else {
@@ -80,6 +85,13 @@ if (isset($_POST['function']) && $_POST['function'] == "reset_req" && isset($_PO
                 die();
             }
         }
+    } else {
+        /*
+         * Even if the email doesn't exist
+         * tell the user that the query
+         * might have worked
+         */
+        echo 1;
     }
 
     $connection = null;
@@ -96,7 +108,7 @@ if (isset($_POST['function']) && $_POST['function'] == "reset" && isset($_POST['
         $st->execute();
 
         $row = $st->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         if ($config['development']) {
             echo "Error: " . $e->getMessage();
         } else {

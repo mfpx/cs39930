@@ -4,9 +4,10 @@ session_start();
 
 require 'system/database.php';
 require 'system/core.php';
+require 'system/security.php';
 
 //If email and password were submitted
-if (isset($_POST['function']) && $_POST['function'] == "login") {
+if (isset($_POST['function']) && $_POST['function'] == "login" && csrf_verify($_POST['token'])) {
     //Sanitising email and password for special characters
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password_in = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);

@@ -95,6 +95,12 @@ function redirect($location, $code) {
  * @param Integer $action Specifies the action to be taken when application is called
  */
 function is_loggedin($action) {
+
+    is_disabled();
+    if (!isset($_SESSION['token'])) {
+        $_SESSION['token'] = token(24);
+    }
+
     if ($action === 1) {
         //If email doesn't exist in superglobal, and is empty
         if (!isset($_SESSION['uid']) && empty($_SESSION['uid'])) {
@@ -106,6 +112,28 @@ function is_loggedin($action) {
         if (isset($_SESSION['uid']) && !empty($_SESSION['uid'])) {
             //Redirect to home.php
             redirect('home.php', 301);
+        }
+    }
+}
+
+function is_disabled() {
+    include 'database.php';
+
+    if (isset($_SESSION['uid'])) {
+        try {
+            $st_disabled = $connection->prepare('SELECT disabled FROM users WHERE email = :email');
+            $st_disabled->bindValue(':email', $_SESSION['uid'], PDO::PARAM_STR);
+            $st_disabled->execute();
+
+            $row = $st_disabled->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        $disabled = $row['disabled'];
+
+        if ($disabled && !empty($disabled)) {
+            logout('index.php', 301);
         }
     }
 }
@@ -128,4 +156,8 @@ function is_admin($email) {
     $connection = null;
 
     return $row['admin'];
+}
+
+function token($length) {
+    return bin2hex(random_bytes($length));
 }

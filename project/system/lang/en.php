@@ -18,8 +18,9 @@ $copyright = "Dafydd Stumbra &copy; 2020";
  * Menu items
  */
 $home = "Home"; //Home button
+$list = "List"; //List button
 $contact_button = "Contact us"; //Contact us button
-$admin_button = "Admin"; //Admin button
+$admin_button = "Users"; //User list
 $logout_button = "Logout"; //Logout button
 
 /*
@@ -191,6 +192,11 @@ $species = "Species";
 $sex_text = "Sex";
 
 /*
+ * Carapace width text
+ */
+$carapace_width = "Carapace width";
+
+/*
  * Abdomen length text
  */
 $abdomen_length = "Abdomen length";
@@ -265,3 +271,58 @@ $email_not_sent = "Message was not delivered!";
  * reCaptcha validation fail text
  */
 $recaptcha_failed = "reCaptcha validation failed!";
+
+/*
+ * Detail change success text
+ */
+$detail_success = "Details have been changed successfully! Page will reload!";
+
+/*
+ * Delete success text
+ */
+$delete_success = "User deleted successfully!";
+
+/*
+ * Record delete success text
+ */
+$record_deleted = "Record deleted successfully!";
+
+/*
+ * User creation success text
+ */
+$new_user_success = "User created successfully!";
+
+/*
+ * API Key generation success text
+ */
+$apikey_changed = "New API key generated successfully!";
+
+/*
+ * API Key deletion success text
+ */
+$apikey_deleted = "API Key has been removed successfully!";
+
+/*
+ * Delete user button text
+ */
+$delete_user = "Delete user";
+
+/*
+ * New API key button text
+ */
+$new_key = "New API key";
+
+/*
+ * Remove API access button text
+ */
+$remove_key = "Remove API access";
+
+/*
+ * Delete own account fail text
+ */
+$delete_own_fail = "You cannot delete your own account!";
+
+/*
+ * User exists text
+ */
+$user_exists = "User with that email address already exists";

@@ -6,5 +6,6 @@ if ($config['footer']) {
     <footer>
         ' . $copyright . '
     </footer>
+    </html>
     ';
 }

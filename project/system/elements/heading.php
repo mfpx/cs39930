@@ -14,7 +14,4 @@
         <div id="menu">
             <a href="index.php"><?php echo $home; ?></a>
             <a href="contact.php"><?php echo $contact_button; ?></a>
-            <a href="test.php">Test page 2</a>
-            <a href="test.php">Test page 3</a>
-            <a href="test.php">Test page 4</a>
         </div>

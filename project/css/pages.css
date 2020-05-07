@@ -11,18 +11,22 @@ hr.override {
 }
 
 table {
-    border-collapse: collapse;
-    padding: 0 20% 0 20%;
+    border-collapse: separate;
+    border: transparent;
+    background: #f3f3f3;
+    border-radius: 10px;
+    padding: 5px 60px 5px 5px;
 }
 
 table th {
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    /*border-bottom: 2px solid black;*/
+    border-right: 20px solid #f3f3f3;
 }
 
 table td {
     text-align: center;
-    border-bottom: 1px solid black;
+    border-right: 20px solid #f3f3f3;
+    /*border-bottom: 1px solid black;*/
 }
 
 table td > button {
@@ -188,7 +192,7 @@ button {
     opacity: 0.5;
 }
 
-#change-form, #reset-form{
+#change-form, #reset-form, #new-user-form{
     font-size: 110%;
     border: transparent;
     background: #f3f3f3;
@@ -198,27 +202,29 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 15%;
     transform: translate(-50%, -50%);
 }
 
-#change-form form input, #reset-form form input{
+#change-form form input, #reset-form form input, #new-user-form form input{
     margin-top: 1%;
     margin-bottom: 5%;
     width: 100%;
 }
 
-#change-form form input[type="checkbox"]{
+#change-form form input[type="checkbox"], #new-user-form form input[type="checkbox"]{
     /*float: right;*/
+    width: auto;
 }
 
 #change-button-show {
     float: left;
     position: relative;
-    top: 2.5rem;
+    top: 4rem;
     margin: 1%;
 }
 
-#change-form button, #reset-form button {
+#change-form button, #reset-form button, #new-user-form button {
     /*float: left;*/
     /*margin: 1%;*/
     margin-bottom: 1%;
@@ -234,6 +240,26 @@ button {
     position: relative;
     left: 50%;
     transform: translate(-50%);
+}
+
+#user-left {
+    /*margin-left: 1%;*/
+    /*margin-top: 1%;*/
+    top: 30%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+#user-flexbox {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+    align-content: center; 
+}
+
+#new-user {
+    margin-left: 1%;
 }
 
 #centre-warn {
@@ -280,7 +306,7 @@ button {
     width: 80%;
 }
 
-.back {
+.browse-nav {
     height: 3rem;
     width: 100%;
 }
@@ -301,6 +327,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 28rem);
     grid-column-gap: 10px;
+    grid-row-gap: 10px;
     width: 100%;
     justify-content: center;
 }

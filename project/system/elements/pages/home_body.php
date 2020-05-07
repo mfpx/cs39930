@@ -5,11 +5,15 @@ require './system/database.php';
 $email = $_SESSION['uid'];
 
 try {
-    $st = $connection->prepare('SELECT first_name, last_name, admin FROM users WHERE email = :email');
+    $st = $connection->prepare('SELECT first_name, last_name, admin, api_key FROM users WHERE email = :email');
     $st->bindValue(':email', $email, PDO::PARAM_STR);
     $st->execute();
 
     $row = $st->fetch(PDO::FETCH_ASSOC);
+    
+    if(empty($row['api_key'])){
+        $row['api_key'] = 'N/A';
+    }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -49,6 +53,7 @@ $connection = null;
         var last_name = $("#last_name").val();
         var password_in = $("#password").val();
         var password_repeat = $("#password_repeat").val();
+        var token = $("#token").val();
         $.ajax
                 ({
                     type: 'post',
@@ -59,13 +64,14 @@ $connection = null;
                         password: password_in,
                         password_repeat: password_repeat,
                         first_name: first_name,
-                        last_name: last_name
+                        last_name: last_name,
+                        token: token
                     },
                     success: function (response) {
-                        alert(response);
+                        //alert(response);
                         if (response === '1') {
                             /*
-                             * Realoads the page for changes to show
+                             * Reloads the page for changes to show
                              * This is easier than having to load every element again
                              */
                             location.reload(false);
@@ -94,7 +100,8 @@ $connection = null;
     }
 </script>
 <div id="welcome">
-    <?php echo $welcome . ', ' . $row['first_name'] . " " . $row['last_name']; ?>
+    <?php echo $welcome . ', ' . $row['first_name'] . " " . $row['last_name']; ?><br />
+    Your API key: <?php echo $row['api_key']; ?>
 </div>
 <div id="session">
     <?php echo $session_started; ?>: <?php echo $_SESSION['doss'] . ' ' . $_SESSION['toss']; ?>
@@ -117,9 +124,9 @@ $connection = null;
         <input type="password" id="password"><br />
         <?php echo $new_password_repeat_field; ?>:<br />
         <input type="password" id="password_repeat">
+        <input type="hidden" id="token" value="<?php echo $_SESSION['token']; ?>">
         <button><?php echo $save_button; ?></button>
     </form>
     <button id="change-button-hide"><?php echo $cancel_button; ?></button>
 </div>
 </body>
-</html>

@@ -31,12 +31,12 @@ $connection = null;
         <hr class="override">
         <div id="menu">
             <a class="right_button" onclick="return logout();"><?php echo $logout_button; ?></a>
-            <a href="browse.php">Browse</a>
+            <a href="index.php"><?php echo $home; ?></a>
+            <a href="list.php"><?php echo $list; ?></a>
             <a href="contact.php"><?php echo $contact_button; ?></a>
-            <a href="test.php">Test page 4</a>
             <?php
             if ($row['admin']) {
-                echo "<div class=\"right_button\"><a href=\"admin.php\">$admin_button</a></div>";
+                echo "<div class=\"right_button\"><a href=\"users.php\">$admin_button</a></div>";
             }
             ?>
         </div>
