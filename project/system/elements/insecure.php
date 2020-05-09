@@ -19,6 +19,7 @@ if (!empty($config['language'])) {
 <html lang="<?php echo $_SESSION['language']; ?>">
     <head>
         <link rel="stylesheet" href="css/pages.css">
+		<link rel="shortcut icon" href="media/favicon.ico" /> 
         <title><?php echo $title; ?></title>
     </head>
     <body>

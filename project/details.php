@@ -200,7 +200,7 @@ if (isset($_POST['function']) && $_POST['function'] == "admin_edit" && csrf_veri
             $st_disabled->execute();
         }
 
-        if (!empty($profile_edit_arr['admin'])) {
+        if (!empty($profile_edit_arr['admin']) && $profile_edit_arr['original_email'] != $_SESSION['uid']) {
             $st_admin = $connection->prepare('UPDATE users SET admin = :admin WHERE email = :email');
             $st_admin->bindValue(':admin', $profile_edit_arr['admin'], PDO::PARAM_INT);
             $st_admin->bindValue(':email', $profile_edit_arr['original_email'], PDO::PARAM_STR);

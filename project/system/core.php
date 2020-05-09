@@ -20,7 +20,7 @@ if ($config['development']) {
 }
 
 /*
- * SSL and general security procedures
+ * SSL check
  */
 if ($config['level'] !== 0) {
     if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Language selection
  * To create a new language, create a new file with the code of that language using English as a template.
@@ -6,14 +7,18 @@
  * NOTE: If you specify a broken language file, the website will default to English!
  *       To change this, edit 'core.php'.
  */
+$config['language'] = "en";
 
-$config['language'] = 'en';
+/*
+ * Website URL
+ * Has to include the trailing slash (/)
+ */
+$config['url'] = "https://mmp-dec21.dcs.aber.ac.uk/project/project/";
 
 /*
  * Sender email
  * This will be used when sending emails
  */
-
 $config['sender'] = "noreply@aber.ac.uk";
 
 /*
@@ -27,21 +32,22 @@ $config['contact_email'] = "dec21@aber.ac.uk";
  * Is the system in development mode?
  * This will show all errors, and system notifications.
  */
-
 $config['development'] = true;
 
 /*
  * Should the footer be displayed?
  */
-
 $config['footer'] = true;
 
 /*
  * SSL Security level
  * -1 - Redirect all traffic regardless of SSL security settings - DEVELOPMENT OPTION
  * 0 - Nothing will happen, regardless of whether or not SSL is enabled
- * 1 - If SSL is not enabled, it will generate an error in the admin panel
+ * 1 - If SSL is not enabled, it will generate a notification in the admin/users panel
  * 2 - If SSL is not enabled, it will strictly redirect all traffic to a selected page
+ * 
+ * NOTE: If the server is configured to automatically redirect all traffic to HTTPS
+ * options 1 and 2 will have no effect!
  */
 $config['level'] = 2;
 $config['insecure_page'] = "insecure.php";

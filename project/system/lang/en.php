@@ -20,7 +20,7 @@ $copyright = "Dafydd Stumbra &copy; 2020";
 $home = "Home"; //Home button
 $list = "List"; //List button
 $contact_button = "Contact us"; //Contact us button
-$admin_button = "Users"; //User list
+$admin_button = "Admin"; //Admin panel/User list
 $logout_button = "Logout"; //Logout button
 
 /*
@@ -155,6 +155,11 @@ $announce = "Announcement";
  * Welcome text
  */
 $welcome = "Welcome";
+
+/*
+ * User list text
+ */
+$user_list = "User list";
 
 /*
  * No announcement text
@@ -293,6 +298,16 @@ $record_deleted = "Record deleted successfully!";
 $new_user_success = "User created successfully!";
 
 /*
+ * User delete confirm text
+ */
+$user_delete_confirm = "Are you sure you want to delete this user? This action cannot be undone!";
+
+/*
+ * New user button text
+ */
+$new_user_btn = "New User";
+
+/*
  * API Key generation success text
  */
 $apikey_changed = "New API key generated successfully!";
@@ -326,3 +341,43 @@ $delete_own_fail = "You cannot delete your own account!";
  * User exists text
  */
 $user_exists = "User with that email address already exists";
+
+/*
+ * Disabled text
+ */
+$disabled_text_form = "Disabled";
+
+/*
+ * Administrator text
+ */
+$administrator_text = "Administrator";
+
+/*
+ * API Key text
+ */
+$api_key_text = "API Key";
+
+/*
+ * API Access text
+ */
+$api_access_text = "API Access";
+
+/*
+ * Generate new API key confirm text
+ */
+$new_key_confirm = "Are you sure you want to generate a new API key?";
+
+/*
+ * API access remove confirm text
+ */
+$key_remove_confirm = "Are you sure you want to remove API access?";
+
+/*
+ * Admin text
+ */
+$admin_text = "Admin";
+
+/*
+ * SSL Disabled text
+ */
+$ssl_disabled = "SSL is disabled!";

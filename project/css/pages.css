@@ -357,4 +357,5 @@ button {
 
 .gallery img {
     width: 80%;
+    margin-top: 10px; /* Remove this if there's enough time to make a search */
 }

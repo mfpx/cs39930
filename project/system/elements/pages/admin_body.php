@@ -3,6 +3,12 @@ require './system/database.php';
 
 is_loggedin(1);
 
+if ($flags['secure'] === 0) {
+    $ssl = 0;
+} else {
+    $ssl = 1;
+}
+
 if (!is_admin($_SESSION['uid']) && isset($_SESSION['uid'])) {
     redirect('home.php', 301);
 }
@@ -16,17 +22,17 @@ try {
     echo '
         <div id="user-left">
         <div id="user-flexbox">
-        <h2>User list</h2>
-        <button id="new-user">New user</button>
+        <h2>' . $user_list . '</h2>
+        <button id="new-user">' . $new_user_btn . '</button>
         </div>
         <table>
         <tr>
-        <th>Email</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Admin</th>
-        <th>Disabled</th>
-        <th>API Key</th>
+        <th>' . $email_field . '</th>
+        <th>' . $first_name_field . '</th>
+        <th>' . $last_name_field . '</th>
+        <th>' . $admin_text . '</th>
+        <th>' . $disabled_text_form . '</th>
+        <th>' . $api_key_text . '</th>
         </tr>
         ';
     foreach ($row as $result) {
@@ -70,6 +76,17 @@ try {
 }
 ?>
 <script type="text/javascript">
+    var ssl = "<?php echo $ssl; ?>";
+    if (!ssl) {
+        $.notify(
+                "<?php echo $ssl_disabled; ?>",
+                {
+                    clickToHide: true,
+                    autoHide: false,
+                    className: "warn"
+                });
+    }
+
     $(document).ready(function () {
         $("#change-button-hide").click(function () {
             location.reload(false);
@@ -95,7 +112,7 @@ try {
 
     $(document).ready(function () {
         $("#new-key").click(function () {
-            if (confirm("Are you sure you want to generate a new API key?")) {
+            if (confirm("<?php echo $new_key_confirm; ?>")) {
                 var email = $("#email").val();
                 var token = '<?php echo $_SESSION['token']; ?>';
                 $.ajax
@@ -133,7 +150,7 @@ try {
 
     $(document).ready(function () {
         $("#delete-key").click(function () {
-            if (confirm("Are you sure you want to remove API access?")) {
+            if (confirm("<?php echo $key_remove_confirm; ?>")) {
                 var email = $("#email").val();
                 var token = '<?php echo $_SESSION['token']; ?>';
                 $.ajax
@@ -169,10 +186,9 @@ try {
         });
     });
 
-
     $(document).ready(function () {
         $("#delete-user").click(function () {
-            if (confirm("Are you sure you want to delete this user? This action cannot be undone!")) {
+            if (confirm("<?php echo $user_delete_confirm; ?>")) {
                 var email = $("#email").val();
                 var token = '<?php echo $_SESSION['token']; ?>';
                 $.ajax
@@ -229,6 +245,11 @@ try {
         });
     });
 
+    /**
+     * Returns an array and fills the form with data
+     
+     * @param {type} email Email of the user to be fetched
+     * @returns {Boolean} False to make sure the page doesn't reload    */
     function form_fill(email) {
         $.ajax
                 ({
@@ -244,6 +265,19 @@ try {
                         $("#original_email").val(obj.email);
                         $("#first_name").val(obj.first_name).attr('placeholder', obj.first_name);
                         $("#last_name").val(obj.last_name).attr('placeholder', obj.last_name);
+
+                        /*
+                         * This prevents users from removing
+                         * administrative privileges
+                         * from themselves
+                         * This is a security precaution
+                         */
+                        var session_email = "<?php echo $_SESSION['uid'] ?>";
+                        if (session_email === obj.email) {
+                            $("#admin").prop('disabled', true);
+                        } else {
+                            $("#admin").prop('enabled', true);
+                        }
 
                         if (obj.disabled === '1') {
                             $("#disabled").prop('checked', true);
@@ -408,11 +442,11 @@ try {
         <input type="text" id="last_name"><br />
         <?php echo $new_password_field; ?>:<br />
         <input type="password" id="password" placeholder="••••••••"><br />
-        Disabled: 
+        <?php echo $disabled_text_form; ?>: 
         <input type="checkbox" id="disabled"><br />
-        Administrator: 
+        <?php echo $administrator_text; ?>: 
         <input type="checkbox" id="admin"><br />
-        API Key:<br />
+        <?php echo $api_key_text; ?>:<br />
         <input type="text" id="apikey" disabled><br />
         <input type="hidden" id="original_email">
         <button id="save-button"><?php echo $save_button; ?></button>
@@ -433,9 +467,9 @@ try {
         <input type="text" id="last_name_new" placeholder="Smith" required><br />
         <?php echo $new_password_field; ?>:<br />
         <input type="password" id="password_new" placeholder="••••••••" required><br />
-        Administrator: 
+        <?php echo $administrator_text; ?>: 
         <input type="checkbox" id="admin_new"><br />
-        API Access:
+        <?php echo $api_access_text; ?>:
         <input type="checkbox" id="apikey_new"><br />
         <button id="save-button"><?php echo $save_button; ?></button>
     </form>

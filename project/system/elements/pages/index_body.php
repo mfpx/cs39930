@@ -87,7 +87,7 @@ is_loggedin(2);
                             token: token
                         },
                         success: function (response) {
-                            alert(response);
+                            //alert(response);
                             if (response === '1') {
                                 $("#reset-form").hide();
                                 $("#overlay").hide();

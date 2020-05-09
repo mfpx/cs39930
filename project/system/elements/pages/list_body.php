@@ -13,7 +13,8 @@ try {
 }
 ?>
 
-<hr class="override" />
+<!-- Uncomment this block if there's enough time to make a search -->
+<!--<hr class="override" />
 <form action="#" class="specs">
     <label for="name">Name:</label>
     <input type="text" id="name" />
@@ -30,7 +31,7 @@ try {
     <label for="boat-name">Boat name:</label>
     <input type="text" id="boat-name" />
     <button type="submit" id="search">Search</button>
-</form>
+</form>-->
 <div class="gallery">
     <?php
     if ($count >= 1) {

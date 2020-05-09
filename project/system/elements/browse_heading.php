@@ -19,6 +19,7 @@ $connection = null;
 <html lang="<?php echo $_SESSION['language']; ?>">
     <head>  
         <link rel="stylesheet" href="css/pages.css">
+		<link rel="shortcut icon" href="media/favicon.ico" /> 
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/notify.js"></script>
         <script type="text/javascript" src="js/logout.js"></script>
@@ -36,7 +37,7 @@ $connection = null;
             <a href="contact.php"><?php echo $contact_button; ?></a>
             <?php
             if ($row['admin']) {
-                echo "<div class=\"right_button\"><a href=\"users.php\">$admin_button</a></div>";
+                echo "<div class=\"right_button\"><a href=\"admin.php\">$admin_button</a></div>";
             }
             ?>
         </div>
