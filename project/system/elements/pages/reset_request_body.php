@@ -39,7 +39,7 @@ if ($row['valid'] != 1 || empty($row['valid'])) {
                             password_repeat: password_repeat
                         },
                         success: function (response) {
-                            alert(response);
+                            //alert(response);
                             if (response === '1') {
                                 $("#login-box").notify(
                                         "<?php echo $p_change_success; ?>",

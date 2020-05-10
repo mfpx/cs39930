@@ -66,7 +66,7 @@ if (isset($_POST['function']) && $_POST['function'] == "save" && csrf_verify($_P
         }
 
         if (!empty($profile_edit_arr['email'])) {
-            if ($_SESSION['uid'] !== $profile_edit_arr['email']) {
+            if (!hash_equals($_SESSION['uid'],$profile_edit_arr['email'])) {
                 $email = $profile_edit_arr['email'];
             } else {
                 $email = $_SESSION['uid'];
@@ -107,7 +107,7 @@ if (isset($_POST['function']) && $_POST['function'] == "new_user" && csrf_verify
 
         $chk_arr = $st_chk->fetch(PDO::FETCH_ASSOC);
 
-        if ($chk_arr['email'] == $profile_create_arr['email']) {
+        if (hash_equals($chk_arr['email'],$profile_create_arr['email'])) {
             $exists = true;
         } else {
             $exists = false;
@@ -251,7 +251,7 @@ if (isset($_POST['function']) && $_POST['function'] == "form_fill") {
 
 if (isset($_POST['function']) && $_POST['function'] == "delete_user" && csrf_verify($_POST['token'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    if ($email == $_SESSION['uid']) {
+    if (hash_equals($email,$_SESSION['uid'])) {
         echo -1;
         die();
     }

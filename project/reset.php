@@ -118,7 +118,7 @@ if (isset($_POST['function']) && $_POST['function'] == "reset" && isset($_POST['
     }
 
     if (!empty($row['valid']) && $row['valid'] == true) {
-        if ($pass_new === $pass_repeat) {
+        if (hash_equals($pass_new,$pass_repeat)) {
             $pass = password_hash($pass_new, PASSWORD_DEFAULT);
             $connection->beginTransaction();
 

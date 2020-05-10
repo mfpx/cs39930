@@ -337,7 +337,7 @@ try {
                         token: token
                     },
                     success: function (response) {
-                        alert(response);
+                        //alert(response);
                         if (response === '1') {
                             $("#new-user-form").notify(
                                     "<?php echo $new_user_success; ?>",
