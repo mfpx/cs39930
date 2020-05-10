@@ -24,6 +24,31 @@ $admin_button = "Admin"; //Admin panel/User list
 $logout_button = "Logout"; //Logout button
 
 /*
+ * Main page welcome text
+ */
+$main_welcome = "Welcome to the database!";
+
+/*
+ * Database run by text
+ */
+$run_by = "This database is run by Aberystwyth University";
+
+/*
+ * Database contents text
+ */
+$db_contains = "The database contains records of crustaceans around Wales";
+
+/*
+ * Database currently has text
+ */
+$db_has = "We currently have";
+
+/*
+ * Records text
+ */
+$db_records = "records";
+
+/*
  * This will be displayed if the login fails
  */
 $logout_fail = "Logout failed! Please report this issue!";

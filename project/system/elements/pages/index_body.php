@@ -1,5 +1,14 @@
 <?php
 is_loggedin(2);
+
+try {
+    $st = $connection->prepare('SELECT img_name FROM records');
+    $st->execute();
+    
+    $count = $st->rowCount();
+} catch (Exception $ex) {
+    echo "Error: " . $ex->getMessage();
+}
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -123,6 +132,12 @@ is_loggedin(2);
         return false;
     }
 </script>
+<div id="head-text">
+<?php echo $main_welcome . '<br />' .
+$run_by . '. ' . $db_contains . '. ' .
+$db_has . ' ' . $count . ' ' . $db_records . '.';
+?>
+</div>
 <div id="login-box">
     <form method="post" onsubmit="return do_login();">
         <div id="login">

@@ -14,5 +14,6 @@
         <hr class="override">
         <div id="menu">
             <a href="index.php"><?php echo $home; ?></a>
+            <a href="list_public.php"><?php echo $list; ?></a>
             <a href="contact.php"><?php echo $contact_button; ?></a>
         </div>

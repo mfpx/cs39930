@@ -81,6 +81,12 @@ a:link {
     cursor: pointer;
 }
 
+#head-text {
+    margin-top: 1%;
+    font-size: 16pt;
+    text-align: center;
+}
+
 footer {
     position: fixed;
     bottom: 0;

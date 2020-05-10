@@ -37,7 +37,7 @@ $config['development'] = true;
 /*
  * Should the footer be displayed?
  */
-$config['footer'] = true;
+$config['footer'] = false;
 
 /*
  * SSL Security level
