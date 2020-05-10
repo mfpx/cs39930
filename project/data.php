@@ -14,6 +14,8 @@ $api_key = filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING);
 $img_name = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
 //Optional: 1 if request is an image
 $img_request = filter_input(INPUT_GET, 'image', FILTER_SANITIZE_NUMBER_INT);
+//Optional: 1 if requesting all data
+$all_data = filter_input(INPUT_GET, 'all', FILTER_SANITIZE_NUMBER_INT);
 
 //Selects an API key from the database
 try {
@@ -40,8 +42,29 @@ if ($api_row['disabled']) {
     die();
 }
 
+//If the user wants all data
+if ($api_key === $api_row['api_key'] && !empty($api_key) && $all_data === '1' && empty($img_name) && empty($img_request)) {
+    try {
+        //Select all records
+        $st = $connection->prepare('SELECT * FROM records');
+        $st->execute();
+
+        $row = $st->fetchAll(PDO::FETCH_ASSOC);
+        //Print all records in JSON
+        echo json_encode($row);
+    } catch (Exception $ex) {
+        if ($config['development']) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+//If the user specified an image ID and "all" tag, tell them it's not allowed
+} else if (!empty($img_name) && !empty($all_data)) {
+    echo 'Not allowed!<br>';
+    die();
+}
+
 //If API key matches the provided key and provided value and image name aren't empty
-if ($api_key === $api_row['api_key'] && !empty($api_key) && !empty($img_name)) {
+if ($api_key === $api_row['api_key'] && !empty($api_key) && !empty($img_name) && empty($all_data)) {
     try {
         //Select everything about the record
         $st = $connection->prepare('SELECT * FROM records WHERE img_name = :img_name');
@@ -90,24 +113,9 @@ if ($api_key === $api_row['api_key'] && !empty($api_key) && !empty($img_name)) {
             echo 'Record not found!';
         }
     }
-} else {
+} else if (empty($all_data)) {
     echo 'Not allowed!<br>';
-}
-
-
-//Informative messages to help user diagnose basic mistakes
-if (empty($img_name) && !empty($api_key)) {
-    echo 'Record ID missing!';
-}
-
-if (empty($api_key) && !empty($img_name)) {
-    echo 'Key missing!';
-}
-
-if (empty($img_name) && empty($api_key)) {
-    echo 'No information supplied!';
 }
 
 //Sets database connection to null (i.e. disconnects)
 $connection = null;
-

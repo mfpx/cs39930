@@ -65,8 +65,9 @@ try {
             }
             
             echo '
-            </a>
+            <br />        
             ' . $record['img_name'] . ', ' . $record['species'] . ', ' . $sex . '
+            </a>
             </div>
         ';
         }

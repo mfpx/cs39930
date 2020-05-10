@@ -25,6 +25,7 @@ try {
         <h2>' . $user_list . '</h2>
         <button id="new-user">' . $new_user_btn . '</button>
         </div>
+        <div class="admin-user-table">
         <table>
         <tr>
         <th>' . $email_field . '</th>
@@ -68,6 +69,7 @@ try {
     }
 
     echo '</table>
+          </div>
           </div>';
 } catch (Exception $e) {
     if ($config['development']) {
@@ -260,7 +262,7 @@ try {
                         email: email
                     },
                     success: function (response) {
-                        var obj = jQuery.parseJSON(response);
+                        var obj = JSON.parse(response);
                         $("#email").val(obj.email).attr('placeholder', obj.email);
                         $("#original_email").val(obj.email);
                         $("#first_name").val(obj.first_name).attr('placeholder', obj.first_name);
@@ -275,8 +277,10 @@ try {
                         var session_email = "<?php echo $_SESSION['uid'] ?>";
                         if (session_email === obj.email) {
                             $("#admin").prop('disabled', true);
+                            $("#disabled").prop('disabled', true);
                         } else {
                             $("#admin").prop('enabled', true);
+                            $("#disabled").prop('enabled', true);
                         }
 
                         if (obj.disabled === '1') {

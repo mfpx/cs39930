@@ -10,8 +10,8 @@ try {
     $st->execute();
 
     $row = $st->fetch(PDO::FETCH_ASSOC);
-    
-    if(empty($row['api_key'])){
+
+    if (empty($row['api_key'])) {
         $row['api_key'] = 'N/A';
     }
 } catch (PDOException $e) {
@@ -74,7 +74,16 @@ $connection = null;
                              * Reloads the page for changes to show
                              * This is easier than having to load every element again
                              */
-                            location.reload(false);
+                            $("#change-form").notify(
+                                    "<?php echo $detail_success; ?>",
+                                    {
+                                        
+                                        position: "bottom center",
+                                        className: "success"
+                                    });
+                            setTimeout(function () {
+                                location.reload(false);
+                            }, 3000); //3s delay to allow the user to read the message
                         } else if (response === '-2') { //If the script returned a "password mismatch" error
                             $("#change-form").notify(
                                     "<?php echo $password_mismatch; ?>",

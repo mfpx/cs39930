@@ -3,9 +3,20 @@
 require 'database.php';
 
 try {
-    $st = $connection->prepare('DELETE FROM pass_resets WHERE date < NOW() - INTERVAL 30 DAY');
-    $st->execute();
+    $st_del = $connection->prepare('DELETE FROM pass_resets WHERE date < NOW() - INTERVAL 30 DAY');
+    $st_del->execute();
 } catch (PDOException $e) {
+    logger($e);
+}
+
+try {
+    $st_upd = $connection->prepare('UPDATE pass_resets SET valid = 0 WHERE date < NOW() - INTERVAL 7 DAY');
+    $st_upd->execute();
+} catch (PDOException $e) {
+    logger($e);
+}
+
+function logger($e) {
     $time = date("H:i:s");
     $date = date("d/m/Y");
 
@@ -18,3 +29,5 @@ try {
     fwrite($log, $txt);
     fclose($log);
 }
+
+$connection = null;

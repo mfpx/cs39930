@@ -2,24 +2,33 @@
 
 session_start();
 
+//Includes
 require 'system/database.php';
 require 'system/core.php';
 require 'system/security.php';
 
+//Check for the function submitted and make sure CSRF token is valid
 if (isset($_POST['function']) && $_POST['function'] == "save" && csrf_verify($_POST['token'])) {
+    //For each of the items in the superglobal, assign them to key/value
     foreach ($_POST as $key => $value) {
+        //If value isn't empty
         if (!empty($value)) {
+            //If key is email
             if ($key === "email") {
+                //Filter it as email
                 filter_var($value, FILTER_SANITIZE_EMAIL);
                 $profile_edit_arr[$key] = $value;
             } else {
+                //Otherwise filter it as a string
                 filter_var($value, FILTER_SANITIZE_STRING);
                 $profile_edit_arr[$key] = $value;
             }
         }
     }
 
+    //Check if the two passwords have been submitted
     if (!empty($profile_edit_arr['password']) && !empty($profile_edit_arr['password_repeat'])) {
+        //Check if they are identical
         password_match($profile_edit_arr['password'], $profile_edit_arr['password_repeat']);
     }
 
@@ -193,7 +202,7 @@ if (isset($_POST['function']) && $_POST['function'] == "admin_edit" && csrf_veri
             $st_email->execute();
         }
 
-        if (!empty($profile_edit_arr['disabled'])) {
+        if (!empty($profile_edit_arr['disabled']) && $profile_edit_arr['original_email'] != $_SESSION['uid']) {
             $st_disabled = $connection->prepare('UPDATE users SET disabled = :disabled WHERE email = :email');
             $st_disabled->bindValue(':disabled', $profile_edit_arr['disabled'], PDO::PARAM_INT);
             $st_disabled->bindValue(':email', $profile_edit_arr['original_email'], PDO::PARAM_STR);
@@ -205,6 +214,12 @@ if (isset($_POST['function']) && $_POST['function'] == "admin_edit" && csrf_veri
             $st_admin->bindValue(':admin', $profile_edit_arr['admin'], PDO::PARAM_INT);
             $st_admin->bindValue(':email', $profile_edit_arr['original_email'], PDO::PARAM_STR);
             $st_admin->execute();
+        }
+
+        if (!empty($profile_edit_arr['email'])) {
+            if (!hash_equals($_SESSION['uid'], $profile_edit_arr['email'])) {
+                $_SESSION['uid'] = $profile_edit_arr['email'];
+            }
         }
 
         if (count($profile_edit_arr) > 1) {
@@ -287,7 +302,7 @@ if (isset($_POST['function']) && $_POST['function'] == "delete_key" && csrf_veri
 }
 
 function password_match($pass, $pass_repeat) {
-    if ($pass !== $pass_repeat) {
+    if (!hash_equals($pass, $pass_repeat)) {
         echo -2;
         die();
     }
