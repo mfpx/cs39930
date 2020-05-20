@@ -1,0 +1,1 @@
+CREATE DEFINER=`david`@`localhost` EVENT `Invalidate old password resets` ON SCHEDULE EVERY 1 WEEK STARTS '2020-05-04 00:01:00' ON COMPLETION PRESERVE ENABLE DO UPDATE pass_resets SET valid = 0 WHERE date < NOW() - INTERVAL 7 DAY
