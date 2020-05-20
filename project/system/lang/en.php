@@ -149,7 +149,7 @@ $save_button = "Save";
 /*
  * Cancel button text
  */
-$cancel_button = "Cancel";
+$cancel_button = "Close";
 
 /*
  * Submit button text

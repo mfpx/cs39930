@@ -216,7 +216,7 @@ if (isset($_POST['function']) && $_POST['function'] == "admin_edit" && csrf_veri
             $st_admin->execute();
         }
 
-        if (!empty($profile_edit_arr['email'])) {
+        if (!empty($profile_edit_arr['email']) && $profile_edit_arr['original_email'] == $_SESSION['uid']) {
             if (!hash_equals($_SESSION['uid'], $profile_edit_arr['email'])) {
                 $_SESSION['uid'] = $profile_edit_arr['email'];
             }
